@@ -32,9 +32,9 @@ class RequisitionSerializer(serializers.ModelSerializer):
         requested_by_id = validated_data["requested_by_id"]
         requested_checkout_date = validated_data["requested_checkout_date"]
         requested_return_date = validated_data["requested_return_date"]
-        print(device_id, requested_by_id, requested_checkout_date, requested_return_date)
+        reason = validated_data["reason"]
 
         # only the fields required for making an application
         return Requisition.objects.create(device_id=device_id, requested_by_id=requested_by_id,
                                           requested_checkout_date=requested_checkout_date,
-                                          requested_return_date=requested_return_date)
+                                          requested_return_date=requested_return_date, reason=reason)
