@@ -1,4 +1,4 @@
-from django.db.models import (Model, CharField, ForeignKey,
+from django.db.models import (Model, CharField, ForeignKey, TextField,
                               CASCADE, DateTimeField, SET_NULL)
 from accounts.models import (Company, Employee)
 
@@ -47,6 +47,7 @@ class Requisition(Model):
     reviewed_by = ForeignKey(Employee, on_delete=SET_NULL, blank=True, null=True,
                              related_name='device_requisition_reviewed')
     status = CharField(max_length=3, choices=REQUSITION_STATUS, default=REQUESTED)
+    reason = TextField(null=True)
 
     checkout_condition = CharField(max_length=2, choices=DEVICE_CONDITION, blank=True, null=True)
     return_condition = CharField(max_length=3, choices=DEVICE_CONDITION, blank=True, null=True)

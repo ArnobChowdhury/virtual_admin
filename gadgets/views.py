@@ -61,7 +61,9 @@ class ApplicationViewSet(viewsets.ModelViewSet):
 
         condition = None
         try:
-            last_requisition = Requisition.objects.filter(device_id=requisition.device_id, actual_checkout_date__isnull=False) \
+            last_requisition = Requisition.objects.filter(
+                device_id=requisition.device_id,
+                actual_checkout_date__isnull=False) \
                 .exclude(id=requisition.id) \
                 .latest('actual_checkout_date')
             if last_requisition.status != "RET":
