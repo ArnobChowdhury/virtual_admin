@@ -7,6 +7,7 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ('username', 'email', 'password', 'first_name', 'last_name')
+        extra_kwargs = {'password': {'write_only': True}}
 
     def create(self, validated_data):
         username = validated_data.get("username")
@@ -31,6 +32,15 @@ class EmployeeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Employee
         fields = "__all__"
+
+    def create(self, validated_data):
+        company = validated_data["company"]
+        user = validated_data["user"]
+        department = validated_data["department"]
+        designation = validated_data["designation"]
+        is_admin = validated_data.get("is_admin", False)
+        return Employee.objects.create(department=department, designation=designation,
+                                       company_id=company.id, user_id=user.id, is_admin=is_admin)
 
 
 class CreateCompanySerializer(serializers.Serializer):
