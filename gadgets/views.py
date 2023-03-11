@@ -23,6 +23,10 @@ class DeviceViewSet(viewsets.ModelViewSet):
 
         return Response(status=status.HTTP_201_CREATED, data=serializer.data)
 
+    def get_queryset(self):
+        user_company_id = self.request.user.employee.company.id
+        return Device.objects.filter(owner_id=user_company_id)
+
 
 class ApplicationViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated]
@@ -37,6 +41,10 @@ class ApplicationViewSet(viewsets.ModelViewSet):
         serializer.save(requested_by_id=requested_by_id, device_id=device_id)
 
         return Response(status=status.HTTP_201_CREATED, data=serializer.data)
+
+    def get_queryset(self):
+        user_company_id = self.request.user.employee.company.id
+        return Requisition.objects.filter(device__owner_id=user_company_id)
 
     def update_status(self, request, requisition_status):
         requisition = self.get_object()

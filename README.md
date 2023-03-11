@@ -94,7 +94,7 @@ JSON body example:
 
 #### Get a device
 
-Any employee can get information about any device. Authorization headers are needed. Send a GET request to http://127.0.0.1:8000/requisition/devices/
+Any employee can get information about any device in their company. Authorization headers are needed. Send a GET request to http://127.0.0.1:8000/requisition/devices/
 
 #### Requisition
 
@@ -111,7 +111,7 @@ Any employee can apply for a requisition to get a device for particular time, st
 
 #### Check status of requisition/s
 
-Any employee can check the status of any requisitions. Authorization header is needed. Send GET a request to http://127.0.0.1:8000/requisition/applications/ for all the requisitions. And for a single requisition, Send a GET request like this with the id of the requisition - http://127.0.0.1:8000/requisition/applications/4 . Replace `4` with the requisition `id`.
+Any employee can check the status of any requisitions of their company. Authorization header is needed. Send GET a request to http://127.0.0.1:8000/requisition/applications/ for all the requisitions. And for a single requisition, Send a GET request like this with the id of the requisition - http://127.0.0.1:8000/requisition/applications/4 . Replace `4` with the requisition `id`.
 
 #### Approve a requistion application
 
