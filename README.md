@@ -44,7 +44,7 @@ This project handles authorization with SimpleJWT. Collect an access token and a
 
 #### Create a company
 
-An user can create a company. This gives them a row in `Company` table and a row in `Employee`. This also makes them an admin to this company. Send a POST request to http://127.0.0.1:8000/accounts/create-company/ . This endpoint expects company information and the employment information of the person creating the company.
+An user can create a company. This gives them a row in `Company` table and a row in `Employee` table. This also makes them an admin to this company. Send a POST request to http://127.0.0.1:8000/accounts/create-company/ . This endpoint expects company information and the employment information of the person creating the company.
 
 Authorization header example:
 
@@ -68,7 +68,7 @@ JSON Body example:
 
 #### Add an employee to the company
 
-Only an admin can add another user as user as an employee of the company. Please note, a new user account is to be created before adding the user as employee. Send a POST request to http://127.0.0.1:8000/accounts/add-employee/ . Authorization header like previous example is needed.
+Only an admin can add another user as an employee of the company. Please note, a new user account is to be created before adding the user as employee. Send a POST request to http://127.0.0.1:8000/accounts/add-employee/ . Authorization header like previous example is needed.
 JSON body example:
 
 ```
